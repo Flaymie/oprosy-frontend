@@ -175,8 +175,6 @@ export default function QuizPage() {
       const quizData = await quizService.getQuizById(id);
       setQuiz(quizData);
       
-      // Убрали проверку существующих ответов - пока не работает без авторизации
-      
     } catch (err) {
         if (err.response?.status === 401) {
             setError('Ошибка авторизации. Недостаточно прав для просмотра.');

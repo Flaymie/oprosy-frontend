@@ -105,9 +105,6 @@ function App() {
 
       // Получаем initData
       const initData = getInitData();
-      const tgUser = window.Telegram?.WebApp?.initDataUnsafe?.user;
-      
-      alert(`InitData: ${initData ? 'есть' : 'нет'}\nTG User: ${tgUser ? JSON.stringify(tgUser) : 'нет'}`);
       
       if (!initData) {
         // Для разработки без Telegram
@@ -121,14 +118,9 @@ function App() {
 
       // Валидируем и получаем данные пользователя
       const userData = await authService.validateInitData(initData);
-      
-      // Показываем alert для отладки в Telegram
-      alert(`User data: ${JSON.stringify(userData)}`);
-      
       setUser(userData);
       
     } catch (err) {
-      alert(`Error: ${err.message}`);
       console.error('Initialization error:', err);
       setError(err.message);
     } finally {
